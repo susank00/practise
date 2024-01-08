@@ -3,24 +3,15 @@ import Contact from "./Contact";
 import "./app.css";
 import ContactAdder from "./componenets/ContactAdder";
 const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const getContacts = JSON.parse(localStorage.getItem("contacts"));
+  const [contacts, setContacts] = useState(getContacts ? getContacts : []);
 
   const addContactData = (contactData) => {
-    setContacts([...contacts, contactData]);
-    console.log(contacts);
+    const allContacts = [contactData, ...contacts];
+    setContacts(allContacts);
+    localStorage.setItem("contacts", JSON.stringify(allContacts));
   };
-  const saveData = () => {
-    localStorage.setItem("name", "xyz");
-    localStorage.setItem("name", "xysadz");
-    localStorage.setItem("name", "usan");
-  };
-  const getData = () => {
-    const getData = localStorage.getItem("name");
-    alert(getData);
-  };
-  const clearData = () => {
-    localStorage.removeItem("name");
-  };
+
   return (
     <>
       <div className="contact_adder">
@@ -31,9 +22,6 @@ const App = () => {
         {contacts.map((data) => (
           <Contact data={data}></Contact>
         ))}
-        <button onClick={saveData}> Save data</button>
-        <button onClick={getData}>Get data</button>
-        <button onClick={clearData}>Clear data</button>
       </div>
     </>
   );

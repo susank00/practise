@@ -3,9 +3,9 @@ import { useState } from "react";
 const Contact_adder = (props) => {
   const [name, setName] = useState("hari");
   const [mobile, setMobile] = useState("9841419035");
-  const [Location, setLocation] = useState("tokha");
+  const [location, setLocation] = useState("tokha");
   const onClickHandler = () => {
-    const contactData = { name: name, number: mobile, Location: Location };
+    const contactData = { name, number: mobile, location };
     props.onContactAdded(contactData);
   };
 
@@ -28,8 +28,8 @@ const Contact_adder = (props) => {
         ></input>
         <input
           type="text"
-          placeholder="location"
-          value={Location}
+          placeholder="Location"
+          value={location}
           onChange={(e) => setLocation(e.target.value)}
         ></input>
         <button onClick={onClickHandler}> click me</button>

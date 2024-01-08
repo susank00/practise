@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 const Contact_adder = (props) => {
-  const [name, setName] = useState("hari");
-  const [mobile, setMobile] = useState("9841419035");
-  const [location, setLocation] = useState("tokha");
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [location, setLocation] = useState("");
   const onClickHandler = () => {
     const contactData = { name, number: mobile, location };
     props.onContactAdded(contactData);

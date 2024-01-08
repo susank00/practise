@@ -20,7 +20,7 @@ const App = () => {
       <div className="contact_list">
         <h3> contact list</h3>
         {contacts.map((data) => (
-          <Contact data={data}></Contact>
+          <Contact key={data.id} data={data}></Contact>
         ))}
       </div>
     </>
